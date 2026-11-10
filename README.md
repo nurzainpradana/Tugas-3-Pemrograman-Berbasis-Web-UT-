@@ -99,13 +99,11 @@ Pastikan perangkat sudah memiliki:
 
 ```bash
 # Mengunduh repository SITTA dari GitHub.
-git clone https://github.com/USERNAME/sitta-vue.git
+git clone https://github.com/nurzainpradana/sitta-vue.git
 
 # Masuk ke direktori proyek.
 cd sitta-vue
 ```
-
-Ganti `USERNAME` dengan username GitHub pemilik repository.
 
 ### 2. Install Dependencies
 
