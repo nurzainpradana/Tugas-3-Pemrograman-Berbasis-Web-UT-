@@ -1,7 +1,15 @@
+
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+// Mengimpor layout utama aplikasi
+import AppLayout from './components/layout/AppLayout.vue'
 </script>
 
 <template>
-  <HelloWorld />
+  <!-- Menggunakan layout utama sebagai kerangka aplikasi -->
+  <AppLayout>
+
+    <!-- Menampilkan halaman sesuai URL yang sedang dibuka -->
+    <RouterView />
+
+  </AppLayout>
 </template>

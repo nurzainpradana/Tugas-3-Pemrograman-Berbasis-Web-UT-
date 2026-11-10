@@ -1,0 +1,964 @@
+/* =========================================================
+   SITTA - SISTEM INFORMASI TIRAS DAN TRANSAKSI BAHAN AJAR
+   Main Stylesheet
+   Framework: Vue 3 + Vite + Bootstrap 5
+   Color Theme: Coastal Blue
+   ========================================================= */
+
+/* =========================================================
+   1. ROOT VARIABLES
+   ========================================================= */
+
+:root {
+  /* Warna utama aplikasi */
+  --primary: #3a5a73;
+  --secondary: #6d93ab;
+  --light-blue: #abc4d1;
+  --cream: #e3dccf;
+  --background: #f2ede4;
+
+  /* Warna tambahan */
+  --white: #ffffff;
+  --text: #263746;
+  --muted: #84929e;
+  --border: #e8edf0;
+
+  /* Warna status */
+  --success: #27834d;
+  --success-bg: #e1f2e7;
+  --warning: #93691b;
+  --warning-bg: #fff2d9;
+  --danger: #b84242;
+  --danger-bg: #fce8e8;
+  --info: #286184;
+  --info-bg: #e4eff6;
+
+  /* Shadow */
+  --shadow-sm: 0 2px 8px rgba(38, 55, 70, 0.04);
+  --shadow-md: 0 5px 18px rgba(38, 55, 70, 0.08);
+
+  /* Border radius */
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+
+  /* Font */
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+
+  /* Memastikan tema browser tetap terang */
+  color-scheme: light;
+}
+
+/* =========================================================
+   2. RESET DAN GLOBAL STYLE
+   ========================================================= */
+
+/* Mengatur seluruh elemen agar perhitungan ukuran konsisten */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Memastikan aplikasi memenuhi ukuran layar */
+html,
+body,
+#app {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Mengatur tampilan body */
+body {
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--background);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Menghilangkan pembatas bawaan Vite pada root aplikasi */
+#app {
+  max-width: none;
+  margin: 0;
+  text-align: left;
+}
+
+/* Mengatur heading */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Mengatur paragraf */
+p {
+  margin-bottom: 0;
+}
+
+/* Mengatur link */
+a {
+  text-decoration: none;
+}
+
+/* =========================================================
+   3. MAIN APP LAYOUT
+   ========================================================= */
+
+/* Membungkus seluruh dashboard */
+.app-container {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Area konten utama */
+.main-content {
+  flex: 1;
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+/* Area konten halaman */
+.content-wrapper {
+  width: 100%;
+  min-width: 0;
+  padding: 30px;
+}
+
+/* =========================================================
+   4. SIDEBAR
+   ========================================================= */
+
+/* Container sidebar */
+.sidebar {
+  width: 255px;
+  min-width: 255px;
+  min-height: 100vh;
+  background: var(--primary);
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  padding: 25px 18px;
+}
+
+/* Area logo dan nama aplikasi */
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 5px 8px 35px;
+}
+
+/* Ikon logo */
+.brand-icon {
+  width: 43px;
+  height: 43px;
+  min-width: 43px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 23px;
+}
+
+/* Nama aplikasi */
+.sidebar-brand h5 {
+  margin: 0;
+  color: var(--white);
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* Deskripsi aplikasi */
+.sidebar-brand small {
+  color: #d0dce4;
+  font-size: 11px;
+}
+
+/* Label menu sidebar */
+.sidebar-label {
+  font-size: 10px;
+  letter-spacing: 1.2px;
+  color: #b9cbd6;
+  padding: 0 12px;
+  margin-bottom: 12px;
+}
+
+/* Container daftar menu */
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+/* Item menu */
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 12px 14px;
+  color: #dce6ec;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+/* Ikon menu */
+.menu-item i {
+  font-size: 18px;
+  min-width: 20px;
+}
+
+/* Hover dan menu aktif */
+.menu-item:hover,
+.menu-item.active {
+  background: rgba(255, 255, 255, 0.16);
+  color: var(--white);
+}
+
+/* Footer sidebar */
+.sidebar-footer {
+  margin-top: auto;
+  padding: 18px 5px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Avatar pengguna */
+.user-avatar,
+.profile-avatar {
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  border-radius: 50%;
+  background: var(--light-blue);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+/* Nama pengguna sidebar */
+.sidebar-footer strong,
+.profile-info strong {
+  display: block;
+  font-size: 12px;
+  color: inherit;
+}
+
+/* Deskripsi pengguna sidebar */
+.sidebar-footer small,
+.profile-info small {
+  display: block;
+  color: #d0dce4;
+  font-size: 11px;
+}
+
+/* =========================================================
+   5. TOP NAVBAR
+   ========================================================= */
+
+/* Navbar bagian atas */
+.top-navbar {
+  height: 85px;
+  min-height: 85px;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Judul navbar */
+.page-title {
+  font-size: 19px;
+  font-weight: 700;
+  margin-bottom: 3px;
+  color: var(--text);
+}
+
+/* Deskripsi navbar */
+.top-navbar small {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+/* Container tombol navbar */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Tombol ikon navbar */
+.btn-icon {
+  width: 38px;
+  height: 38px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  color: var(--primary);
+  font-size: 17px;
+  cursor: pointer;
+}
+
+/* Garis pemisah navbar */
+.navbar-divider {
+  width: 1px;
+  height: 35px;
+  background: var(--border);
+}
+
+/* Informasi profil navbar */
+.profile-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Deskripsi profil navbar */
+.profile-info small {
+  color: var(--muted);
+}
+
+/* =========================================================
+   6. PAGE HEADING
+   ========================================================= */
+
+/* Container judul halaman */
+.page-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 24px;
+}
+
+/* Judul utama halaman */
+.page-heading h3 {
+  color: var(--primary);
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+/* Deskripsi halaman */
+.page-heading p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* =========================================================
+   7. DASHBOARD CARD
+   ========================================================= */
+
+/* Kartu utama dashboard */
+.dashboard-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--white);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+/* Header kartu */
+.dashboard-card .card-header {
+  background: var(--white);
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
+/* Body kartu */
+.dashboard-card .card-body {
+  background: var(--white);
+}
+
+/* Kartu ringkasan */
+.summary-card {
+  height: 100%;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--white);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Nilai statistik */
+.summary-card h3 {
+  font-size: 25px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* Deskripsi statistik */
+.summary-card p {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* Ikon statistik */
+.summary-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: var(--cream);
+  color: var(--primary);
+  font-size: 22px;
+}
+
+/* =========================================================
+   8. FORM DAN BUTTON
+   ========================================================= */
+
+/* Input form */
+.form-control,
+.form-select {
+  min-height: 40px;
+  font-size: 14px;
+  border-color: var(--border);
+  border-radius: 7px;
+}
+
+/* Fokus input */
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--secondary);
+  box-shadow: 0 0 0 0.2rem rgba(109, 147, 171, 0.15);
+}
+
+/* Label form */
+.form-label {
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* Tombol utama */
+.btn-primary {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+/* Hover tombol utama */
+.btn-primary:hover {
+  background: #29465c;
+  border-color: #29465c;
+}
+
+/* Tombol sekunder */
+.btn-light {
+  border: 1px solid var(--border);
+  background: var(--white);
+  color: var(--text);
+}
+
+/* Hover tombol sekunder */
+.btn-light:hover {
+  background: #f3f6f8;
+  border-color: var(--secondary);
+}
+
+/* =========================================================
+   9. TABLE
+   ========================================================= */
+
+/* Tabel utama */
+.table {
+  color: var(--text);
+  font-size: 13px;
+  vertical-align: middle;
+}
+
+/* Header tabel */
+.table thead th {
+  background: #f5f7f8;
+  color: var(--primary);
+  font-weight: 700;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+/* Sel tabel */
+.table td,
+.table th {
+  padding: 12px 14px;
+}
+
+/* Hover baris tabel */
+.table tbody tr:hover {
+  background: #f7f9fa;
+}
+
+/* Badge status */
+.badge {
+  font-weight: 600;
+}
+
+/* =========================================================
+   10. STOCK PAGE
+   ========================================================= */
+
+/* Container filter stok */
+.stock-filter {
+  display: grid;
+  grid-template-columns: 0.8fr 2fr 1fr 1fr 1.2fr auto;
+  gap: 12px;
+  align-items: end;
+}
+
+/* Informasi stok */
+.selected-item-info {
+  padding: 16px;
+  border-radius: 10px;
+  background: #f2f6f8;
+  border: 1px solid #dce6ec;
+  transition: all 0.2s ease;
+}
+
+/* Efek hover informasi stok */
+.selected-item-hover {
+  border-color: var(--primary);
+  background: #eaf1f5;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(58, 90, 115, 0.12);
+}
+
+/* Container pagination */
+.pagination {
+  margin-bottom: 0;
+}
+
+/* Tombol pagination */
+.pagination .page-link {
+  color: var(--primary);
+  border-color: var(--border);
+}
+
+/* Pagination aktif */
+.pagination .active .page-link {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--white);
+}
+
+/* =========================================================
+   11. ORDER PAGE
+   ========================================================= */
+
+/* Pilihan jenis pesanan */
+.order-type-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border: 1px solid #d9e2e8;
+  border-radius: 10px;
+  cursor: pointer;
+  background: var(--white);
+}
+
+/* Pilihan jenis pesanan aktif */
+.order-type-option:has(input:checked) {
+  border-color: var(--primary);
+  background: #f1f6f9;
+}
+
+/* Ringkasan pembayaran */
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 18px;
+  font-size: 14px;
+}
+
+/* Total pembayaran */
+.summary-total {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Ikon ringkasan pesanan */
+.order-summary-card .summary-icon {
+  background: var(--cream);
+  color: var(--primary);
+}
+
+/* Overlay notifikasi berhasil */
+.order-success-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(20, 35, 45, 0.55);
+}
+
+/* Kotak notifikasi berhasil */
+.order-success-modal {
+  width: 100%;
+  max-width: 400px;
+  padding: 30px;
+  border-radius: 18px;
+  background: var(--white);
+  text-align: center;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.15);
+}
+
+/* Ikon keberhasilan */
+.success-icon {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  background: var(--success-bg);
+  color: var(--success);
+  font-size: 32px;
+}
+
+/* =========================================================
+   12. TRACKING PAGE
+   ========================================================= */
+
+/* Form pencarian tracking */
+.tracking-search-form {
+  max-width: 100%;
+}
+
+/* Daftar pengiriman */
+.tracking-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Item daftar pengiriman */
+.tracking-list-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  min-height: 70px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--white);
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Efek hover item pengiriman */
+.tracking-list-item:hover {
+  border-color: var(--secondary);
+  background: #f5f8fa;
+}
+
+/* Item pengiriman aktif */
+.tracking-list-active {
+  border-color: var(--primary);
+  background: #edf3f6;
+}
+
+/* Informasi penerima */
+.tracking-list-item .flex-grow-1 {
+  min-width: 0;
+}
+
+/* Ikon paket */
+.tracking-list-icon {
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: var(--cream);
+  color: var(--primary);
+  font-size: 20px;
+}
+
+/* Badge status pengiriman */
+.tracking-status-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Status dalam perjalanan */
+.tracking-status-info {
+  background: var(--info-bg);
+  color: var(--info);
+}
+
+/* Status berhasil */
+.tracking-status-success {
+  background: var(--success-bg);
+  color: var(--success);
+}
+
+/* Status dalam proses */
+.tracking-status-warning {
+  background: var(--warning-bg);
+  color: var(--warning);
+}
+
+/* Status lainnya */
+.tracking-status-default {
+  background: #edf0f2;
+  color: #52616b;
+}
+
+/* Baris detail pengiriman */
+.tracking-detail-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 12px 0;
+  border-bottom: 1px solid #edf0f2;
+  font-size: 14px;
+}
+
+/* Label detail pengiriman */
+.tracking-detail-row span {
+  color: var(--muted);
+}
+
+/* Nomor delivery order */
+.tracking-detail-number {
+  padding: 16px;
+  border-radius: 12px;
+  background: #f2f6f8;
+}
+
+/* Timeline pengiriman */
+.tracking-timeline {
+  position: relative;
+  padding-left: 8px;
+}
+
+/* Item timeline */
+.tracking-timeline-item {
+  position: relative;
+  display: flex;
+  gap: 16px;
+  padding-bottom: 30px;
+}
+
+/* Garis penghubung timeline */
+.tracking-timeline-item:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  top: 32px;
+  left: 15px;
+  bottom: 0;
+  width: 2px;
+  background: #dce5eb;
+}
+
+/* Lingkaran timeline */
+.tracking-timeline-marker {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--primary);
+  color: var(--white);
+}
+
+/* Konten timeline */
+.tracking-timeline-content {
+  flex: 1;
+  min-width: 0;
+  padding-top: 5px;
+}
+
+/* Tampilan kosong */
+.tracking-empty {
+  padding: 35px 20px;
+  text-align: center;
+  color: var(--muted);
+}
+
+/* Ikon tampilan kosong */
+.tracking-empty > i {
+  font-size: 36px;
+}
+
+/* =========================================================
+   13. MODAL
+   ========================================================= */
+
+/* Modal detail stok */
+.modal-content {
+  border: none;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+/* Header modal */
+.modal-header {
+  border-bottom: 1px solid var(--border);
+}
+
+/* Footer modal */
+.modal-footer {
+  border-top: 1px solid var(--border);
+}
+
+/* =========================================================
+   14. RESPONSIVE TABLET DAN MOBILE
+   ========================================================= */
+
+/* Tablet */
+@media (max-width: 992px) {
+  /* Mengatur filter stok */
+  .stock-filter {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Mengatur padding konten */
+  .content-wrapper {
+    padding: 22px;
+  }
+
+  /* Mengatur judul halaman */
+  .page-heading h3 {
+    font-size: 24px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  /* Sidebar versi mobile */
+  .sidebar {
+    width: 75px;
+    min-width: 75px;
+    padding: 20px 10px;
+  }
+
+  /* Logo sidebar */
+  .sidebar-brand {
+    justify-content: center;
+    padding: 5px 0 30px;
+  }
+
+  /* Menyembunyikan teks sidebar */
+  .sidebar-brand div:last-child,
+  .sidebar-label,
+  .menu-item span,
+  .sidebar-footer > div:not(.user-avatar),
+  .sidebar-footer > i {
+    display: none;
+  }
+
+  /* Menu sidebar mobile */
+  .menu-item {
+    justify-content: center;
+    padding: 13px 5px;
+  }
+
+  /* Footer sidebar mobile */
+  .sidebar-footer {
+    justify-content: center;
+  }
+
+  /* Navbar mobile */
+  .top-navbar {
+    padding: 0 15px;
+  }
+
+  /* Profil navbar mobile */
+  .profile-info > div:last-child,
+  .navbar-divider {
+    display: none;
+  }
+
+  /* Konten mobile */
+  .content-wrapper {
+    padding: 18px;
+  }
+
+  /* Filter stok mobile */
+  .stock-filter {
+    grid-template-columns: 1fr;
+  }
+
+  /* Judul halaman mobile */
+  .page-heading h3 {
+    font-size: 22px;
+  }
+
+  /* Item tracking mobile */
+  .tracking-list-item {
+    gap: 9px;
+    padding: 10px;
+  }
+
+  /* Detail tracking mobile */
+  .tracking-detail-row {
+    flex-direction: column;
+    gap: 4px;
+  }
+}
+
+/* Mobile kecil */
+@media (max-width: 480px) {
+  /* Memperkecil padding konten */
+  .content-wrapper {
+    padding: 14px;
+  }
+
+  /* Memperkecil navbar */
+  .top-navbar {
+    height: 70px;
+    min-height: 70px;
+  }
+
+  /* Memperkecil judul navbar */
+  .page-title {
+    font-size: 16px;
+  }
+
+  /* Menyembunyikan badge tracking agar tidak memenuhi baris */
+  .tracking-list-item .tracking-status-badge {
+    font-size: 10px;
+    padding: 5px 7px;
+  }
+
+  /* Memperkecil ikon tracking */
+  .tracking-list-icon {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    font-size: 17px;
+  }
+}

@@ -11,8 +11,8 @@
   --shadow:
     rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --sans: system-ui, "Segoe UI", Roboto, sans-serif;
+  --heading: system-ui, "Segoe UI", Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
 
   font: 18px/145% var(--sans);
@@ -279,7 +279,7 @@ code {
 
   &::before,
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     top: -4.5px;
     border: 5px solid transparent;
@@ -293,4 +293,212 @@ code {
     right: 0;
     border-right-color: var(--border);
   }
+}
+
+/* Memberikan transisi halus pada informasi bahan ajar. */
+.selected-item-info {
+  transition: all 0.2s ease;
+}
+
+/* Mengubah tampilan ketika kursor berada di informasi bahan ajar. */
+.selected-item-hover {
+  border-color: #3a5a73;
+  background: #eaf1f5;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(58, 90, 115, 0.12);
+}
+
+/** TRACKING **/
+
+/* Mengatur tampilan form pencarian tracking. */
+.tracking-search-form {
+    max-width: 700px;
+}
+
+/* Mengatur daftar pengiriman. */
+.tracking-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Mengatur setiap item pengiriman. */
+.tracking-list-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #e0e7eb;
+    border-radius: 12px;
+    background: #fff;
+    color: #263746;
+    transition: all 0.2s ease;
+}
+
+/* Memberikan efek hover pada item pengiriman. */
+.tracking-list-item:hover {
+    border-color: #6D93AB;
+    background: #f5f8fa;
+}
+
+/* Menandai item pengiriman yang sedang dipilih. */
+.tracking-list-active {
+    border-color: #3A5A73;
+    background: #edf3f6;
+}
+
+/* Mengatur ikon paket. */
+.tracking-list-icon {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: #E3DCCF;
+    color: #3A5A73;
+    font-size: 20px;
+}
+
+/* Mengatur badge status pengiriman. */
+.tracking-status-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* Warna status dalam perjalanan. */
+.tracking-status-info {
+    background: #e4eff6;
+    color: #286184;
+}
+
+/* Warna status berhasil atau diterima. */
+.tracking-status-success {
+    background: #e1f2e7;
+    color: #277345;
+}
+
+/* Warna status dalam proses. */
+.tracking-status-warning {
+    background: #fff2d9;
+    color: #93691b;
+}
+
+/* Warna status lainnya. */
+.tracking-status-default {
+    background: #edf0f2;
+    color: #52616b;
+}
+
+/* Mengatur baris detail pengiriman. */
+.tracking-detail-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 12px 0;
+    border-bottom: 1px solid #edf0f2;
+    font-size: 14px;
+}
+
+/* Mengatur teks label detail. */
+.tracking-detail-row span {
+    color: #778da9;
+}
+
+/* Mengatur nomor delivery order. */
+.tracking-detail-number {
+    padding: 16px;
+    border-radius: 12px;
+    background: #f2f6f8;
+}
+
+/* Mengatur timeline pengiriman. */
+.tracking-timeline {
+    position: relative;
+    padding-left: 8px;
+}
+
+/* Mengatur setiap item timeline. */
+.tracking-timeline-item {
+    position: relative;
+    display: flex;
+    gap: 16px;
+    padding-bottom: 30px;
+}
+
+/* Membuat garis penghubung timeline. */
+.tracking-timeline-item:not(:last-child)::before {
+    content: "";
+    position: absolute;
+    top: 32px;
+    left: 15px;
+    bottom: 0;
+    width: 2px;
+    background: #dce5eb;
+}
+
+/* Mengatur lingkaran timeline. */
+.tracking-timeline-marker {
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #3A5A73;
+    color: #fff;
+}
+
+/* Mengatur konten timeline. */
+.tracking-timeline-content {
+    flex: 1;
+    padding-top: 5px;
+}
+
+/* Mengatur tampilan ketika tidak ada data. */
+.tracking-empty {
+    padding: 35px 20px;
+    text-align: center;
+    color: #778da9;
+}
+
+/* Mengatur ikon pada kondisi kosong. */
+.tracking-empty > i {
+    font-size: 36px;
+}
+
+/* Menyesuaikan tampilan tracking pada layar kecil. */
+@media (max-width: 576px) {
+    .tracking-list-item {
+        gap: 9px;
+        padding: 10px;
+    }
+
+    .tracking-detail-row {
+        flex-direction: column;
+        gap: 4px;
+    }
+}
+/* Mengatur tampilan tombol daftar pengiriman. */
+.tracking-list-item {
+    min-height: 70px;
+    cursor: pointer;
+    text-align: left;
+}
+
+/* Mengatur teks informasi penerima agar tidak terlalu lebar. */
+.tracking-list-item .flex-grow-1 {
+    min-width: 0;
+}
+
+/* Menyesuaikan badge status pada layar kecil. */
+.tracking-list-item .tracking-status-badge {
+    white-space: nowrap;
 }
